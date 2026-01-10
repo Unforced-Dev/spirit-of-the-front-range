@@ -54,14 +54,14 @@
             list-style: none;
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 1.5rem;
             flex-wrap: wrap;
         }
 
         nav a {
             color: var(--forest);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
             transition: color 0.2s;
         }
@@ -117,7 +117,7 @@
         }
 
         .vision {
-            max-width: 700px;
+            max-width: 750px;
             font-size: 1.15rem;
             color: var(--text);
             margin-bottom: 2rem;
@@ -184,6 +184,12 @@
             max-width: 1200px;
         }
 
+        .section-full {
+            max-width: 100%;
+            padding-left: 0;
+            padding-right: 0;
+        }
+
         .section h2 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 2.5rem;
@@ -201,70 +207,174 @@
             font-size: 1.1rem;
         }
 
-        /* Two Entities Section */
-        .entities {
+        /* Bioregion Definition */
+        .bioregion-section {
+            background: var(--forest);
+            color: var(--cream);
+            padding: 4rem 2rem;
+        }
+
+        .bioregion-section h2 {
+            color: var(--cream);
+        }
+
+        .bioregion-content {
+            max-width: 900px;
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
         }
 
-        .entity {
-            background: var(--warm-white);
-            padding: 2.5rem;
-            border-radius: 12px;
-            border-top: 4px solid var(--sage);
+        .bioregion-content p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            opacity: 0.9;
         }
 
-        .entity.commons {
-            border-color: var(--sky);
-        }
-
-        .entity h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            color: var(--forest);
-            margin-bottom: 0.5rem;
-        }
-
-        .entity .subtitle {
+        .bioregion-content .definition {
             font-size: 0.9rem;
-            color: var(--sage);
+            opacity: 0.7;
             margin-bottom: 1rem;
             font-style: italic;
         }
 
-        .entity ul {
+        .bioregion-question {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-top: 2rem;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .bioregion-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* What is a Commons */
+        .commons-definition {
+            background: var(--warm-white);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--sky);
+            margin: 2rem auto;
+            max-width: 800px;
+        }
+
+        .commons-definition p {
+            font-size: 1.1rem;
+            color: var(--text);
+        }
+
+        /* Extitutional Model */
+        .model-section {
+            background: linear-gradient(180deg, var(--cream) 0%, var(--warm-white) 100%);
+        }
+
+        .model-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 2rem;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .model-entity {
+            background: var(--warm-white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .model-entity.membrane {
+            border: 2px solid var(--forest);
+        }
+
+        .model-entity.network {
+            border: 2px dashed var(--sky);
+        }
+
+        .model-entity h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            color: var(--forest);
+            margin-bottom: 0.25rem;
+        }
+
+        .model-entity .subtitle {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .model-entity ul {
             list-style: none;
             margin-top: 1rem;
         }
 
-        .entity li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
+        .model-entity li {
+            padding: 0.4rem 0;
+            padding-left: 1.25rem;
             position: relative;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
-        .entity li::before {
+        .model-entity li::before {
             content: '';
             position: absolute;
             left: 0;
-            top: 1rem;
-            width: 8px;
-            height: 8px;
+            top: 0.85rem;
+            width: 6px;
+            height: 6px;
             border-radius: 50%;
             background: var(--sage);
         }
 
-        .entity.commons li::before {
+        .model-entity.network li::before {
             background: var(--sky);
+        }
+
+        .model-arrow {
+            text-align: center;
+            color: var(--forest);
+        }
+
+        .model-arrow .arrow {
+            font-size: 2rem;
+            display: block;
+        }
+
+        .model-arrow .label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-light);
+        }
+
+        .model-arrow .note {
+            font-size: 0.75rem;
+            color: var(--sage);
+            font-style: italic;
+        }
+
+        @media (max-width: 900px) {
+            .model-grid {
+                grid-template-columns: 1fr;
+            }
+            .model-arrow {
+                transform: rotate(90deg);
+            }
         }
 
         /* Functions Grid */
         .functions {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 1.5rem;
             margin-top: 2rem;
         }
@@ -286,23 +396,10 @@
         .function.fire { border-top: 4px solid var(--sunset); }
         .function.air { border-top: 4px solid var(--sage); }
 
-        .function-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
         .function h3 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.3rem;
             color: var(--forest);
-            margin-bottom: 0.5rem;
-        }
-
-        .function .element {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--text-light);
             margin-bottom: 0.75rem;
         }
 
@@ -360,46 +457,122 @@
         }
 
         /* Calendar Section */
-        .calendar {
+        .calendar-section {
+            background: var(--warm-white);
+        }
+
+        .calendar-wheel {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .calendar-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
             margin-top: 2rem;
         }
 
-        .season {
-            background: var(--warm-white);
+        .calendar-quarter {
             padding: 1.5rem;
-            border-radius: 8px;
-            border-left: 3px solid var(--sage);
+            border: 1px solid rgba(0,0,0,0.08);
         }
 
-        .season h4 {
+        .calendar-quarter:nth-child(1) { background: rgba(107, 143, 113, 0.08); }
+        .calendar-quarter:nth-child(2) { background: rgba(196, 149, 106, 0.08); }
+        .calendar-quarter:nth-child(3) { background: rgba(122, 158, 184, 0.08); }
+        .calendar-quarter:nth-child(4) { background: rgba(107, 91, 79, 0.08); }
+
+        .calendar-quarter h4 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             color: var(--forest);
             margin-bottom: 0.25rem;
         }
 
-        .season .dates {
-            font-size: 0.8rem;
+        .calendar-quarter .season-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
             color: var(--text-light);
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
         }
 
-        .season ul {
+        .calendar-quarter ul {
             list-style: none;
             font-size: 0.85rem;
         }
 
-        .season li {
-            padding: 0.25rem 0;
+        .calendar-quarter li {
+            padding: 0.3rem 0;
             color: var(--text-light);
         }
 
-        .season .highlight {
+        .calendar-quarter .highlight {
             color: var(--forest);
             font-weight: 500;
+        }
+
+        .calendar-quarter .date {
+            font-size: 0.75rem;
+            color: var(--sage);
+        }
+
+        @media (max-width: 900px) {
+            .calendar-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .calendar-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Collaborating Nodes */
+        .nodes-section {
+            background: linear-gradient(180deg, rgba(45, 74, 62, 0.95) 0%, rgba(45, 74, 62, 1) 100%);
+            color: var(--cream);
+            padding: 5rem 2rem;
+        }
+
+        .nodes-section h2 {
+            color: var(--cream);
+        }
+
+        .nodes-section .section-intro {
+            color: rgba(248, 246, 242, 0.8);
+        }
+
+        .nodes-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .node {
+            background: rgba(255,255,255,0.1);
+            padding: 0.75rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            transition: background 0.2s;
+        }
+
+        .node:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .nodes-cta {
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-top: 2rem;
+            color: var(--sage);
         }
 
         /* Working Groups */
@@ -423,9 +596,10 @@
             margin-bottom: 0.5rem;
         }
 
-        .working-group p {
+        .working-group .question {
             font-size: 0.9rem;
             color: var(--text-light);
+            font-style: italic;
             margin-bottom: 1rem;
         }
 
@@ -437,9 +611,54 @@
             color: var(--forest);
         }
 
+        /* Ways to Weave */
+        .weave-section {
+            background: var(--cream);
+        }
+
+        .weave-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .weave-option {
+            background: var(--warm-white);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .weave-option:hover {
+            border-color: var(--sage);
+            transform: translateY(-4px);
+        }
+
+        .weave-option h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: var(--forest);
+            margin-bottom: 0.5rem;
+        }
+
+        .weave-option p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .weave-option .btn {
+            padding: 0.6rem 1.5rem;
+            font-size: 0.9rem;
+        }
+
         /* Principles */
         .principles-section {
-            background: linear-gradient(180deg, var(--cream) 0%, var(--warm-white) 100%);
+            background: linear-gradient(180deg, var(--warm-white) 0%, var(--cream) 100%);
         }
 
         .principles {
@@ -468,34 +687,49 @@
 
         /* Join Section */
         .join-section {
-            background: var(--warm-white);
+            background: var(--forest);
+            color: var(--cream);
             padding: 5rem 2rem;
             text-align: center;
         }
 
         .join-section h2 {
+            color: var(--cream);
             margin-bottom: 1rem;
         }
 
         .join-section > p {
             max-width: 600px;
             margin: 0 auto 2rem;
-            color: var(--text-light);
+            opacity: 0.9;
+        }
+
+        .join-section .btn-primary {
+            background: var(--cream);
+            color: var(--forest);
+        }
+
+        .join-section .btn-primary:hover {
+            background: var(--warm-white);
         }
 
         .membership-note {
-            background: rgba(107, 143, 113, 0.1);
+            background: rgba(255,255,255,0.1);
             padding: 1.5rem 2rem;
             border-radius: 8px;
             max-width: 600px;
             margin: 2rem auto 0;
             font-size: 0.9rem;
-            color: var(--forest);
+            text-align: left;
+        }
+
+        .membership-note strong {
+            color: var(--sage);
         }
 
         /* Footer */
         footer {
-            background: var(--forest);
+            background: #1a2f26;
             color: var(--cream);
             padding: 4rem 2rem 2rem;
         }
@@ -504,7 +738,7 @@
             max-width: 1000px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
         }
 
@@ -515,8 +749,8 @@
         }
 
         .footer-section p, .footer-section li {
-            font-size: 0.9rem;
-            opacity: 0.8;
+            font-size: 0.85rem;
+            opacity: 0.7;
             margin-bottom: 0.5rem;
         }
 
@@ -526,7 +760,8 @@
 
         .footer-section a {
             color: var(--cream);
-            opacity: 0.8;
+            opacity: 0.7;
+            text-decoration: none;
         }
 
         .footer-section a:hover {
@@ -538,14 +773,29 @@
             padding-top: 2rem;
             margin-top: 2rem;
             border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-bottom p {
             font-size: 0.85rem;
-            opacity: 0.7;
+            opacity: 0.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-bottom .matriots {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1rem;
+            opacity: 0.8;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
             nav ul {
-                gap: 1rem;
+                gap: 0.75rem;
+            }
+
+            nav a {
+                font-size: 0.8rem;
             }
 
             .hero {
@@ -561,12 +811,14 @@
 <body>
     <nav>
         <ul>
-            <li><a href="#about">About</a></li>
+            <li><a href="#bioregion">Bioregion</a></li>
+            <li><a href="#model">How It Works</a></li>
             <li><a href="#functions">What We Do</a></li>
             <li><a href="#goals">2026 Goals</a></li>
             <li><a href="#calendar">Calendar</a></li>
+            <li><a href="#nodes">Collaborators</a></li>
             <li><a href="#groups">Working Groups</a></li>
-            <li><a href="#join">Join</a></li>
+            <li><a href="#weave">Get Involved</a></li>
         </ul>
     </nav>
 
@@ -591,116 +843,137 @@
             </svg>
         </div>
         <h1>Front Range Commons</h1>
-        <p class="tagline">Infrastructure for belonging</p>
+        <p class="tagline">A bioregional infrastructure of belonging</p>
         <p class="vision">
-            A bioregional solidarity network anchored in trust, stretching from Fort Collins to Colorado Springs.
-            We are the people, projects, and places working together to regenerate our shared home along Colorado's Front Range.
+            A regenerating and flourishing bioregion on the Front Range - now and for future generations -
+            that is cultured by living relational networks and governed by commons infrastructure.
         </p>
         <p class="philosophy">"We care for that to which we belong."</p>
         <div class="cta-group">
-            <a href="#join" class="btn btn-primary">Join the Network</a>
-            <a href="#about" class="btn btn-secondary">Learn More</a>
+            <a href="#weave" class="btn btn-primary">Get Involved</a>
+            <a href="#bioregion" class="btn btn-secondary">Learn More</a>
         </div>
     </section>
 
-    <section class="section" id="about">
-        <h2>Two Entities, One Movement</h2>
+    <!-- What is a Bioregion -->
+    <section class="bioregion-section" id="bioregion">
+        <h2>What is a Bioregion?</h2>
+        <div class="bioregion-content">
+            <div>
+                <p class="definition">(noun): A geographically defined area characterized by distinct ecological features that together form a coherent biocultural home.</p>
+                <p>
+                    Remembering our embedded belonging to the living world invites us to reimagine our social,
+                    cultural, and economic systems according to ecological webs of relationships.
+                </p>
+                <p style="margin-top: 1rem;">
+                    Our mutual interdependence is the basis of our mutual responsibility for care and reciprocity.
+                </p>
+            </div>
+            <div>
+                <p>
+                    <strong>A Bioregional Commons</strong> recognizes the wellbeing of human and natural systems -
+                    neighborhoods, watersheds, ecosystems, soil - as shared resources that the people who live in
+                    and depend on that land collectively steward.
+                </p>
+            </div>
+        </div>
+        <p class="bioregion-question">How do we function as an Ecology?</p>
+    </section>
+
+    <!-- The Extitutional Model -->
+    <section class="section section-wide model-section" id="model">
+        <h2>The 'Extitutional' Hybrid Model</h2>
         <p class="section-intro">
-            Our bioregional work is held by two complementary structures: a self-governing network
-            and a nonprofit foundation that supports it.
+            Our bioregional work is held by two complementary structures: a nonprofit membrane that interfaces
+            with existing systems, and a self-governing network that operates autonomously.
         </p>
 
-        <div class="entities">
-            <div class="entity commons">
-                <h3>Front Range Commons</h3>
-                <p class="subtitle">The Network</p>
+        <div class="model-grid">
+            <div class="model-entity membrane">
+                <h3>Spirit of the Front Range</h3>
+                <p class="subtitle">Bioregional Membrane / 501(c)(3)</p>
                 <p>
-                    A self-governing bioregional solidarity network. We are the living membrane through which
-                    people of place coordinate, share resources, and tend to our shared home. Once we reach
-                    100+ members, we become a Decentralized Unincorporated Nonprofit Association (DUNA).
+                    A backbone nonprofit that helps organize and scaffold the core functions of the Bioregional Commons.
                 </p>
                 <ul>
-                    <li>Participatory membership and governance</li>
-                    <li>Collective decision-making on resource flow</li>
-                    <li>Commons principles (Ostrom's 8 principles)</li>
-                    <li>Peer-to-peer accountability and attestation</li>
+                    <li>Interface with legal/financial systems</li>
+                    <li>Regulatory navigation</li>
+                    <li>Resource translation</li>
+                    <li>Institutional self-negation</li>
                 </ul>
             </div>
 
-            <div class="entity">
-                <h3>Spirit of the Front Range</h3>
-                <p class="subtitle">The Foundation</p>
+            <div class="model-arrow">
+                <span class="label">Support</span>
+                <span class="arrow">&#8594;</span>
+                <span class="note">(No Control)</span>
+            </div>
+
+            <div class="model-entity network">
+                <h3>Front Range Commons</h3>
+                <p class="subtitle">Bioregional Network / DUNA</p>
                 <p>
-                    A 501(c)(3) nonprofit originally founded in 1992, now revitalized to serve as the
-                    institutional backbone for bioregional solidarity. We receive, steward, and flow
-                    resources toward regenerative work across the Front Range.
+                    A self-governing solidarity network - the living membrane through which people of place
+                    coordinate, share resources, and tend to our shared home.
                 </p>
                 <ul>
-                    <li>Fiscal hosting for the network</li>
-                    <li>Grant-making and fund distribution</li>
-                    <li>Knowledge commons infrastructure</li>
-                    <li>Board eventually elected by bioregional assembly</li>
+                    <li>Autonomous coordination</li>
+                    <li>Credible neutrality</li>
+                    <li>Mycelial self-organization</li>
+                    <li>Distributed governance</li>
                 </ul>
             </div>
         </div>
     </section>
 
+    <!-- Core Ecological Functions -->
     <section class="section section-wide" id="functions">
-        <h2>Ecological Functions</h2>
+        <h2>Core Ecological Functions</h2>
         <p class="section-intro">
-            Like a living ecosystem, our network operates through four interconnected functions,
-            each mapped to an element.
+            Like a living ecosystem, our network operates through four interconnected functions.
         </p>
 
         <div class="functions">
             <div class="function water">
-                <div class="function-icon">💧</div>
-                <p class="element">Water / Mycelium</p>
                 <h3>Resource Flow</h3>
-                <p>Like mycelium distributing nutrients through a forest, we move resources to where they're needed most through participatory grantmaking tied to seasonal rhythms.</p>
+                <p>Flowing resources to the parts of our bioregion that need it most through project funding and mutual aid.</p>
             </div>
 
             <div class="function earth">
-                <div class="function-icon">🌱</div>
-                <p class="element">Earth / Ground</p>
-                <h3>Coordination</h3>
-                <p>The soil of our work: shared tools, knowledge commons, calendaring, and the infrastructure that enables us to collaborate across the bioregion.</p>
-            </div>
-
-            <div class="function fire">
-                <div class="function-icon">🔥</div>
-                <p class="element">Fire / Transformation</p>
-                <h3>Convergence</h3>
-                <p>Seasonal gatherings for transformation and connection. We come together at the turning of the wheel to celebrate, decide, and deepen relationship.</p>
+                <h3>Coordination Tools</h3>
+                <p>Providing tools for coordination, collaboration, and distributed decision-making across the bioregion.</p>
             </div>
 
             <div class="function air">
-                <div class="function-icon">💨</div>
-                <p class="element">Air / Sporulation</p>
-                <h3>Story & Identity</h3>
-                <p>Weaving a shared narrative of bioregional belonging. Broadcasting our work and sporulating the seeds of regenerative culture to other bioregions.</p>
+                <h3>Shared Identity</h3>
+                <p>Fostering a shared bioregional identity - "matriotism" - and facilitating exchange with other bioregions.</p>
+            </div>
+
+            <div class="function fire">
+                <h3>Convergence</h3>
+                <p>Convening gatherings, skill-shares, and trainings that deepen relationship and build capacity.</p>
             </div>
         </div>
     </section>
 
+    <!-- 2026 Goals -->
     <section class="goals-section" id="goals">
         <h2>2026 Goals</h2>
         <p class="section-intro">
-            Our first year is about defining who we are, engaging our bioregion, and empowering
-            collective action.
+            Our first year is about defining who we are, engaging our bioregion, and empowering collective action.
         </p>
 
         <div class="goals">
             <div class="goal">
                 <h3>Build the Network</h3>
-                <p>Reach 150 diverse members across the Front Range bioregion, representing Fort Collins to Colorado Springs.</p>
-                <p class="target">Target: 150 members by end of 2026 (Dunbar's number)</p>
+                <p>Reach 150 diverse members across the Front Range bioregion, from Fort Collins to Colorado Springs.</p>
+                <p class="target">Target: 150 members by end of 2026</p>
             </div>
 
             <div class="goal">
                 <h3>Define Ethics & Aesthetics</h3>
                 <p>Articulate the shared values and agreement field for participation. Solid enough to relate to, soft enough for others to help create.</p>
-                <p class="target">Target: Draft by Spring Equinox 2026</p>
+                <p class="target">Target: Draft by Spring Equinox</p>
             </div>
 
             <div class="goal">
@@ -712,93 +985,144 @@
             <div class="goal">
                 <h3>Wheel of the Year</h3>
                 <p>Establish seasonal rhythms for gathering, grant-making, and membership that align with natural cycles.</p>
-                <p class="target">Target: First full cycle by Winter 2026</p>
+                <p class="target">Target: First full cycle complete</p>
             </div>
         </div>
     </section>
 
-    <section class="section section-wide" id="calendar">
+    <!-- Calendar -->
+    <section class="section section-wide calendar-section" id="calendar">
         <h2>2026 Calendar</h2>
         <p class="section-intro">
             We organize around the wheel of the year, with membership opening at equinoxes
             and major gatherings at cross-quarter days.
         </p>
 
-        <div class="calendar">
-            <div class="season">
-                <h4>Winter</h4>
-                <p class="dates">Now - March 2026</p>
-                <ul>
-                    <li class="highlight">Define ethics & aesthetics</li>
-                    <li>Working groups active</li>
-                    <li>Imbolc: Attestations begin</li>
-                    <li>Feb 14-15: ETH Boulder</li>
-                </ul>
-            </div>
+        <div class="calendar-wheel">
+            <div class="calendar-grid">
+                <div class="calendar-quarter">
+                    <h4>Winter</h4>
+                    <p class="season-label">Dec - Feb</p>
+                    <ul>
+                        <li>Rest & Incubate</li>
+                        <li class="highlight">Feb 1: Imbolc Inner Retreat</li>
+                        <li><span class="date">Feb 13-15:</span> ETH Boulder</li>
+                        <li>Define ethics & aesthetics</li>
+                    </ul>
+                </div>
 
-            <div class="season">
-                <h4>Spring</h4>
-                <p class="dates">March - June 2026</p>
-                <ul>
-                    <li class="highlight">March 20: First membership opening</li>
-                    <li>Onboarding cohort begins</li>
-                    <li>April: Ecological volunteer days</li>
-                    <li class="highlight">Beltane (May): Public launch gathering</li>
-                </ul>
-            </div>
+                <div class="calendar-quarter">
+                    <h4>Spring</h4>
+                    <p class="season-label">Mar - May</p>
+                    <ul>
+                        <li class="highlight"><span class="date">Mar 20:</span> Equinox Membership Threshold</li>
+                        <li>ALLO IRL - Spirit</li>
+                        <li><span class="date">April:</span> Volunteer Days, Ecological Immersives</li>
+                        <li class="highlight"><span class="date">May:</span> Beltane @ Bandshell</li>
+                    </ul>
+                </div>
 
-            <div class="season">
-                <h4>Summer</h4>
-                <p class="dates">June - September 2026</p>
-                <ul>
-                    <li class="highlight">June 21: AlloIRL / Summer Solstice</li>
-                    <li>July: River trip / internal retreat</li>
-                    <li>Lammas (Aug): Skill share on the land</li>
-                    <li class="highlight">Sept 22: Second membership opening</li>
-                </ul>
-            </div>
+                <div class="calendar-quarter">
+                    <h4>Summer</h4>
+                    <p class="season-label">Jun - Aug</p>
+                    <ul>
+                        <li class="highlight"><span class="date">June:</span> Solstice ALLO IRL</li>
+                        <li><span class="date">July:</span> River Trip</li>
+                        <li class="highlight"><span class="date">Aug:</span> Lammas 2-3 day listening + skill-share</li>
+                    </ul>
+                </div>
 
-            <div class="season">
-                <h4>Fall</h4>
-                <p class="dates">September - December 2026</p>
-                <ul>
-                    <li class="highlight">October: COhere / AlloIRL</li>
-                    <li>Samhain: Harvest celebration</li>
-                    <li>First grant distribution round</li>
-                    <li>Winter: Rest, composting, internal work</li>
-                </ul>
+                <div class="calendar-quarter">
+                    <h4>Autumn</h4>
+                    <p class="season-label">Sep - Nov</p>
+                    <ul>
+                        <li class="highlight"><span class="date">Sept:</span> Equinox Membership Threshold</li>
+                        <li class="highlight"><span class="date">Oct:</span> ALLO IRL - COhere</li>
+                        <li>Samhain: Harvest celebration</li>
+                        <li><span class="date">Nov:</span> Rest</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- Collaborating Nodes -->
+    <section class="nodes-section" id="nodes">
+        <h2>Collaborating Nodes</h2>
+        <p class="section-intro">
+            We've been gathering and collaborating in different constellations over the greater part of a decade,
+            with a more directed converging over these past two years.
+        </p>
+
+        <div class="nodes-grid">
+            <span class="node">Spirit of the Front Range</span>
+            <span class="node">Open Civics</span>
+            <span class="node">Mystery Works</span>
+            <span class="node">Woven Web - COhere</span>
+            <span class="node">Rivr App (ONE Local)</span>
+        </div>
+
+        <p class="nodes-cta">...and you?</p>
+    </section>
+
+    <!-- Working Groups -->
     <section class="section" id="groups">
         <h2>Working Groups</h2>
         <p class="section-intro">
             Three working groups are actively shaping the network's emergence.
-            Each has a defined scope and clear next steps.
         </p>
 
         <div class="working-groups">
             <div class="working-group">
-                <h3>Communication</h3>
-                <p>How we extend the call and maintain connection across the bioregion. Invitation language, broadcast channels, and the ongoing pulse of good news.</p>
-                <div class="focus">Focus: Email list, calendar, newsletter rhythm, messaging for Spring Equinox opening</div>
-            </div>
-
-            <div class="working-group">
-                <h3>Convergence</h3>
-                <p>How we bring people together. The cadence of gatherings, the wheel of the year, and the design of transformative experiences.</p>
-                <div class="focus">Focus: 2026 event calendar, Beltane launch planning, seasonal pulse design</div>
+                <h3>Communications</h3>
+                <p class="question">How do we communicate and coordinate among ourselves and along the bioregion? How do we welcome others' contributions to the Commons?</p>
+                <div class="focus">Focus: Email list, calendar, newsletter rhythm, invitation messaging</div>
             </div>
 
             <div class="working-group">
                 <h3>Culture</h3>
-                <p>How we practice right relationship. Ethics and aesthetics, accessibility, transformative justice, and the ongoing tending of our relational soil.</p>
-                <div class="focus">Focus: Values articulation, onboarding rituals, conflict transformation processes</div>
+                <p class="question">How do we sense into and articulate our shared ethics and aesthetics, further developing our bioregional identity? How do we promote diversity, accessibility, and the effervescences of real, living culture?</p>
+                <div class="focus">Focus: Values articulation, onboarding rituals, right relationship practices</div>
+            </div>
+
+            <div class="working-group">
+                <h3>Calendar</h3>
+                <p class="question">What kind of events, programs, classes, rituals, gatherings support the integrative culturing of our resplendent bioregion?</p>
+                <div class="focus">Focus: 2026 event calendar, Beltane launch, seasonal pulse design</div>
             </div>
         </div>
     </section>
 
+    <!-- Ways to Weave -->
+    <section class="section weave-section" id="weave">
+        <h2>Ways to Weave</h2>
+        <p class="section-intro">
+            This vision is co-creative. We're inviting the wisdom of this circle to support a widening sensing
+            of how to engender this vision well.
+        </p>
+
+        <div class="weave-grid">
+            <div class="weave-option">
+                <h3>Join a Working Group</h3>
+                <p>Communications, Culture, or Calendar - pick where your energy wants to flow.</p>
+                <a href="mailto:join@frontrangecommons.org?subject=Working Group Interest" class="btn btn-secondary">Express Interest</a>
+            </div>
+
+            <div class="weave-option">
+                <h3>Consult on the Vision</h3>
+                <p>We request your sensing and suggestions. Who should know about this? Who else is in this space?</p>
+                <a href="mailto:hello@frontrangecommons.org?subject=Vision Consultation" class="btn btn-secondary">Share Thoughts</a>
+            </div>
+
+            <div class="weave-option">
+                <h3>Join our Newsletter</h3>
+                <p>Stay connected to the pulse of the Commons and upcoming gatherings.</p>
+                <a href="mailto:newsletter@frontrangecommons.org?subject=Subscribe to Newsletter" class="btn btn-secondary">Subscribe</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy -->
     <section class="section principles-section">
         <h2>Our Philosophy</h2>
         <p class="section-intro">
@@ -809,7 +1133,7 @@
         <div class="principles">
             <div class="principle">
                 <h3>Belonging as Verb</h3>
-                <p>Belonging is not something you acquire - it's something you practice through caring for the land and each other. We belong by tending.</p>
+                <p>Belonging is not something you acquire - it's something you practice through caring for the land and each other.</p>
             </div>
 
             <div class="principle">
@@ -829,17 +1153,18 @@
 
             <div class="principle">
                 <h3>Pluralistic Spirituality</h3>
-                <p>Non-sectarian but not neutral. We recognize organizing as a ritual act while creating space for diverse cosmologies and practices.</p>
+                <p>Non-sectarian but not neutral. We recognize organizing as a ritual act while creating space for diverse cosmologies.</p>
             </div>
 
             <div class="principle">
-                <h3>Remain Unintelligible</h3>
-                <p>Being legible to ourselves while remaining somewhat illegible to systems that would co-opt or control. The network is the membrane.</p>
+                <h3>Support, Not Control</h3>
+                <p>The nonprofit membrane supports the network but does not control it. Institutional self-negation in service of autonomous coordination.</p>
             </div>
         </div>
     </section>
 
-    <section class="join-section" id="join">
+    <!-- Join -->
+    <section class="join-section">
         <h2>Become a Commoner</h2>
         <p>
             Membership formally opens at the Spring Equinox (March 20, 2026).
@@ -880,10 +1205,21 @@
                     <li><a href="mailto:hello@spiritofthefrontrange.org">hello@spiritofthefrontrange.org</a></li>
                 </ul>
             </div>
+
+            <div class="footer-section">
+                <h4>Collaborators</h4>
+                <ul>
+                    <li>Spirit of the Front Range</li>
+                    <li>Open Civics</li>
+                    <li>Mystery Works</li>
+                    <li>Woven Web</li>
+                </ul>
+            </div>
         </div>
 
         <div class="footer-bottom">
-            <p>Formed January 2026 at a gathering in the foothills. We are just beginning.</p>
+            <p>Formed January 2026 at a gathering in the foothills.</p>
+            <p class="matriots">xox, the Front Range Commoners - a passionate bunch of Matriots</p>
         </div>
     </footer>
 </body>
