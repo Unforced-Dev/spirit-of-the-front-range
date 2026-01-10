@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Front Range Commons | Infrastructure for Belonging</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --forest: #2d4a3e;
+            --sage: #6b8f71;
+            --sky: #7a9eb8;
+            --sunset: #c4956a;
+            --earth: #6b5b4f;
+            --cream: #f8f6f2;
+            --warm-white: #fefdfb;
+            --text: #2d2d2d;
+            --text-light: #5a5a5a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--cream);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(254, 253, 251, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--forest);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--sage);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            background: linear-gradient(180deg, var(--warm-white) 0%, var(--cream) 100%);
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--forest), var(--sage), var(--sky), var(--sunset));
+        }
+
+        .logo-mark {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 7vw, 4.5rem);
+            font-weight: 500;
+            color: var(--forest);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.02em;
+        }
+
+        .tagline {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            font-weight: 300;
+            color: var(--sage);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .vision {
+            max-width: 700px;
+            font-size: 1.15rem;
+            color: var(--text);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .philosophy {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--forest);
+            margin-bottom: 3rem;
+            padding: 1.5rem 2rem;
+            border-left: 3px solid var(--sage);
+            background: rgba(107, 143, 113, 0.08);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background: var(--forest);
+            color: var(--warm-white);
+        }
+
+        .btn-primary:hover {
+            background: #1f3a2d;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--forest);
+            border: 2px solid var(--forest);
+        }
+
+        .btn-secondary:hover {
+            background: var(--forest);
+            color: var(--warm-white);
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-wide {
+            max-width: 1200px;
+        }
+
+        .section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 500;
+            color: var(--forest);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        /* Two Entities Section */
+        .entities {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .entity {
+            background: var(--warm-white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border-top: 4px solid var(--sage);
+        }
+
+        .entity.commons {
+            border-color: var(--sky);
+        }
+
+        .entity h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--forest);
+            margin-bottom: 0.5rem;
+        }
+
+        .entity .subtitle {
+            font-size: 0.9rem;
+            color: var(--sage);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .entity ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .entity li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .entity li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 1rem;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--sage);
+        }
+
+        .entity.commons li::before {
+            background: var(--sky);
+        }
+
+        /* Functions Grid */
+        .functions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .function {
+            background: var(--warm-white);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .function:hover {
+            transform: translateY(-4px);
+        }
+
+        .function.water { border-top: 4px solid var(--sky); }
+        .function.earth { border-top: 4px solid var(--earth); }
+        .function.fire { border-top: 4px solid var(--sunset); }
+        .function.air { border-top: 4px solid var(--sage); }
+
+        .function-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .function h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: var(--forest);
+            margin-bottom: 0.5rem;
+        }
+
+        .function .element {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-light);
+            margin-bottom: 0.75rem;
+        }
+
+        .function p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Goals Section */
+        .goals-section {
+            background: var(--forest);
+            color: var(--cream);
+            padding: 5rem 2rem;
+        }
+
+        .goals-section h2 {
+            color: var(--cream);
+        }
+
+        .goals-section .section-intro {
+            color: rgba(248, 246, 242, 0.8);
+        }
+
+        .goals {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .goal {
+            background: rgba(255,255,255,0.08);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 3px solid var(--sage);
+        }
+
+        .goal h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+            color: var(--cream);
+        }
+
+        .goal p {
+            font-size: 0.95rem;
+            opacity: 0.85;
+        }
+
+        .goal .target {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: var(--sage);
+        }
+
+        /* Calendar Section */
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .season {
+            background: var(--warm-white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 3px solid var(--sage);
+        }
+
+        .season h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: var(--forest);
+            margin-bottom: 0.25rem;
+        }
+
+        .season .dates {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-bottom: 0.75rem;
+        }
+
+        .season ul {
+            list-style: none;
+            font-size: 0.85rem;
+        }
+
+        .season li {
+            padding: 0.25rem 0;
+            color: var(--text-light);
+        }
+
+        .season .highlight {
+            color: var(--forest);
+            font-weight: 500;
+        }
+
+        /* Working Groups */
+        .working-groups {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .working-group {
+            background: var(--warm-white);
+            padding: 2rem;
+            border-radius: 12px;
+        }
+
+        .working-group h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            color: var(--forest);
+            margin-bottom: 0.5rem;
+        }
+
+        .working-group p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .working-group .focus {
+            font-size: 0.85rem;
+            background: rgba(107, 143, 113, 0.1);
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            color: var(--forest);
+        }
+
+        /* Principles */
+        .principles-section {
+            background: linear-gradient(180deg, var(--cream) 0%, var(--warm-white) 100%);
+        }
+
+        .principles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .principle {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+
+        .principle h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: var(--forest);
+            margin-bottom: 0.5rem;
+        }
+
+        .principle p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        /* Join Section */
+        .join-section {
+            background: var(--warm-white);
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .join-section h2 {
+            margin-bottom: 1rem;
+        }
+
+        .join-section > p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            color: var(--text-light);
+        }
+
+        .membership-note {
+            background: rgba(107, 143, 113, 0.1);
+            padding: 1.5rem 2rem;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: 2rem auto 0;
+            font-size: 0.9rem;
+            color: var(--forest);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--forest);
+            color: var(--cream);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p, .footer-section li {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: var(--cream);
+            opacity: 0.8;
+        }
+
+        .footer-section a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+            }
+
+            .hero {
+                padding-top: 5rem;
+            }
+
+            .section {
+                padding: 3rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#functions">What We Do</a></li>
+            <li><a href="#goals">2026 Goals</a></li>
+            <li><a href="#calendar">Calendar</a></li>
+            <li><a href="#groups">Working Groups</a></li>
+            <li><a href="#join">Join</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="logo-mark">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Mountains -->
+                <path d="M10 75 L30 45 L50 75" stroke="#2d4a3e" stroke-width="1.5" fill="none"/>
+                <path d="M35 75 L55 40 L75 75" stroke="#2d4a3e" stroke-width="1.5" fill="none"/>
+                <path d="M55 75 L75 50 L90 75" stroke="#6b8f71" stroke-width="1.5" fill="none"/>
+                <!-- Network nodes -->
+                <circle cx="30" cy="65" r="4" fill="#7a9eb8"/>
+                <circle cx="55" cy="58" r="4" fill="#7a9eb8"/>
+                <circle cx="75" cy="65" r="4" fill="#7a9eb8"/>
+                <circle cx="42" cy="52" r="3" fill="#c4956a"/>
+                <circle cx="65" cy="50" r="3" fill="#c4956a"/>
+                <!-- Connections -->
+                <path d="M30 65 Q42 55 55 58" stroke="#7a9eb8" stroke-width="1.2" fill="none" opacity="0.6"/>
+                <path d="M55 58 Q65 58 75 65" stroke="#7a9eb8" stroke-width="1.2" fill="none" opacity="0.6"/>
+                <path d="M42 52 L55 58" stroke="#c4956a" stroke-width="1" opacity="0.5"/>
+                <path d="M65 50 L75 65" stroke="#c4956a" stroke-width="1" opacity="0.5"/>
+            </svg>
+        </div>
+        <h1>Front Range Commons</h1>
+        <p class="tagline">Infrastructure for belonging</p>
+        <p class="vision">
+            A bioregional solidarity network anchored in trust, stretching from Fort Collins to Colorado Springs.
+            We are the people, projects, and places working together to regenerate our shared home along Colorado's Front Range.
+        </p>
+        <p class="philosophy">"We care for that to which we belong."</p>
+        <div class="cta-group">
+            <a href="#join" class="btn btn-primary">Join the Network</a>
+            <a href="#about" class="btn btn-secondary">Learn More</a>
+        </div>
+    </section>
+
+    <section class="section" id="about">
+        <h2>Two Entities, One Movement</h2>
+        <p class="section-intro">
+            Our bioregional work is held by two complementary structures: a self-governing network
+            and a nonprofit foundation that supports it.
+        </p>
+
+        <div class="entities">
+            <div class="entity commons">
+                <h3>Front Range Commons</h3>
+                <p class="subtitle">The Network</p>
+                <p>
+                    A self-governing bioregional solidarity network. We are the living membrane through which
+                    people of place coordinate, share resources, and tend to our shared home. Once we reach
+                    100+ members, we become a Decentralized Unincorporated Nonprofit Association (DUNA).
+                </p>
+                <ul>
+                    <li>Participatory membership and governance</li>
+                    <li>Collective decision-making on resource flow</li>
+                    <li>Commons principles (Ostrom's 8 principles)</li>
+                    <li>Peer-to-peer accountability and attestation</li>
+                </ul>
+            </div>
+
+            <div class="entity">
+                <h3>Spirit of the Front Range</h3>
+                <p class="subtitle">The Foundation</p>
+                <p>
+                    A 501(c)(3) nonprofit originally founded in 1992, now revitalized to serve as the
+                    institutional backbone for bioregional solidarity. We receive, steward, and flow
+                    resources toward regenerative work across the Front Range.
+                </p>
+                <ul>
+                    <li>Fiscal hosting for the network</li>
+                    <li>Grant-making and fund distribution</li>
+                    <li>Knowledge commons infrastructure</li>
+                    <li>Board eventually elected by bioregional assembly</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-wide" id="functions">
+        <h2>Ecological Functions</h2>
+        <p class="section-intro">
+            Like a living ecosystem, our network operates through four interconnected functions,
+            each mapped to an element.
+        </p>
+
+        <div class="functions">
+            <div class="function water">
+                <div class="function-icon">💧</div>
+                <p class="element">Water / Mycelium</p>
+                <h3>Resource Flow</h3>
+                <p>Like mycelium distributing nutrients through a forest, we move resources to where they're needed most through participatory grantmaking tied to seasonal rhythms.</p>
+            </div>
+
+            <div class="function earth">
+                <div class="function-icon">🌱</div>
+                <p class="element">Earth / Ground</p>
+                <h3>Coordination</h3>
+                <p>The soil of our work: shared tools, knowledge commons, calendaring, and the infrastructure that enables us to collaborate across the bioregion.</p>
+            </div>
+
+            <div class="function fire">
+                <div class="function-icon">🔥</div>
+                <p class="element">Fire / Transformation</p>
+                <h3>Convergence</h3>
+                <p>Seasonal gatherings for transformation and connection. We come together at the turning of the wheel to celebrate, decide, and deepen relationship.</p>
+            </div>
+
+            <div class="function air">
+                <div class="function-icon">💨</div>
+                <p class="element">Air / Sporulation</p>
+                <h3>Story & Identity</h3>
+                <p>Weaving a shared narrative of bioregional belonging. Broadcasting our work and sporulating the seeds of regenerative culture to other bioregions.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="goals-section" id="goals">
+        <h2>2026 Goals</h2>
+        <p class="section-intro">
+            Our first year is about defining who we are, engaging our bioregion, and empowering
+            collective action.
+        </p>
+
+        <div class="goals">
+            <div class="goal">
+                <h3>Build the Network</h3>
+                <p>Reach 150 diverse members across the Front Range bioregion, representing Fort Collins to Colorado Springs.</p>
+                <p class="target">Target: 150 members by end of 2026 (Dunbar's number)</p>
+            </div>
+
+            <div class="goal">
+                <h3>Define Ethics & Aesthetics</h3>
+                <p>Articulate the shared values and agreement field for participation. Solid enough to relate to, soft enough for others to help create.</p>
+                <p class="target">Target: Draft by Spring Equinox 2026</p>
+            </div>
+
+            <div class="goal">
+                <h3>Accountability Infrastructure</h3>
+                <p>Build the peer-to-peer trust and attestation systems that enable genuine commons governance.</p>
+                <p class="target">Target: In place by end of 2026</p>
+            </div>
+
+            <div class="goal">
+                <h3>Wheel of the Year</h3>
+                <p>Establish seasonal rhythms for gathering, grant-making, and membership that align with natural cycles.</p>
+                <p class="target">Target: First full cycle by Winter 2026</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-wide" id="calendar">
+        <h2>2026 Calendar</h2>
+        <p class="section-intro">
+            We organize around the wheel of the year, with membership opening at equinoxes
+            and major gatherings at cross-quarter days.
+        </p>
+
+        <div class="calendar">
+            <div class="season">
+                <h4>Winter</h4>
+                <p class="dates">Now - March 2026</p>
+                <ul>
+                    <li class="highlight">Define ethics & aesthetics</li>
+                    <li>Working groups active</li>
+                    <li>Imbolc: Attestations begin</li>
+                    <li>Feb 14-15: ETH Boulder</li>
+                </ul>
+            </div>
+
+            <div class="season">
+                <h4>Spring</h4>
+                <p class="dates">March - June 2026</p>
+                <ul>
+                    <li class="highlight">March 20: First membership opening</li>
+                    <li>Onboarding cohort begins</li>
+                    <li>April: Ecological volunteer days</li>
+                    <li class="highlight">Beltane (May): Public launch gathering</li>
+                </ul>
+            </div>
+
+            <div class="season">
+                <h4>Summer</h4>
+                <p class="dates">June - September 2026</p>
+                <ul>
+                    <li class="highlight">June 21: AlloIRL / Summer Solstice</li>
+                    <li>July: River trip / internal retreat</li>
+                    <li>Lammas (Aug): Skill share on the land</li>
+                    <li class="highlight">Sept 22: Second membership opening</li>
+                </ul>
+            </div>
+
+            <div class="season">
+                <h4>Fall</h4>
+                <p class="dates">September - December 2026</p>
+                <ul>
+                    <li class="highlight">October: COhere / AlloIRL</li>
+                    <li>Samhain: Harvest celebration</li>
+                    <li>First grant distribution round</li>
+                    <li>Winter: Rest, composting, internal work</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="groups">
+        <h2>Working Groups</h2>
+        <p class="section-intro">
+            Three working groups are actively shaping the network's emergence.
+            Each has a defined scope and clear next steps.
+        </p>
+
+        <div class="working-groups">
+            <div class="working-group">
+                <h3>Communication</h3>
+                <p>How we extend the call and maintain connection across the bioregion. Invitation language, broadcast channels, and the ongoing pulse of good news.</p>
+                <div class="focus">Focus: Email list, calendar, newsletter rhythm, messaging for Spring Equinox opening</div>
+            </div>
+
+            <div class="working-group">
+                <h3>Convergence</h3>
+                <p>How we bring people together. The cadence of gatherings, the wheel of the year, and the design of transformative experiences.</p>
+                <div class="focus">Focus: 2026 event calendar, Beltane launch planning, seasonal pulse design</div>
+            </div>
+
+            <div class="working-group">
+                <h3>Culture</h3>
+                <p>How we practice right relationship. Ethics and aesthetics, accessibility, transformative justice, and the ongoing tending of our relational soil.</p>
+                <div class="focus">Focus: Values articulation, onboarding rituals, conflict transformation processes</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section principles-section">
+        <h2>Our Philosophy</h2>
+        <p class="section-intro">
+            We are grounded in a bioregional worldview that understands our mutual embeddedness
+            in this place as the foundation for shared responsibility.
+        </p>
+
+        <div class="principles">
+            <div class="principle">
+                <h3>Belonging as Verb</h3>
+                <p>Belonging is not something you acquire - it's something you practice through caring for the land and each other. We belong by tending.</p>
+            </div>
+
+            <div class="principle">
+                <h3>Place-Based Solidarity</h3>
+                <p>A post-partisan political identity rooted in place. We are responsible to each other across difference because we share this land.</p>
+            </div>
+
+            <div class="principle">
+                <h3>Commons Governance</h3>
+                <p>Following Elinor Ostrom's principles: clear membership, peer accountability, graduated consequences, and the ability to shape the rules together.</p>
+            </div>
+
+            <div class="principle">
+                <h3>Mutual Support</h3>
+                <p>Flowing resources to projects that serve the ecosystem's needs. Not charity, but recognition that some have more than they need while others don't have enough.</p>
+            </div>
+
+            <div class="principle">
+                <h3>Pluralistic Spirituality</h3>
+                <p>Non-sectarian but not neutral. We recognize organizing as a ritual act while creating space for diverse cosmologies and practices.</p>
+            </div>
+
+            <div class="principle">
+                <h3>Remain Unintelligible</h3>
+                <p>Being legible to ourselves while remaining somewhat illegible to systems that would co-opt or control. The network is the membrane.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="join-section" id="join">
+        <h2>Become a Commoner</h2>
+        <p>
+            Membership formally opens at the Spring Equinox (March 20, 2026).
+            Express your interest now to be part of the first cohort.
+        </p>
+        <a href="mailto:join@frontrangecommons.org" class="btn btn-primary">Express Interest</a>
+
+        <div class="membership-note">
+            <strong>What membership means:</strong> Commoners participate in the shared governance of our bioregional commons.
+            You'll have voice in how resources flow, where we gather, and what ethics guide our work.
+            We're aiming for 150 members by end of 2026 - a number small enough for real relationship,
+            large enough for real impact.
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Front Range Commons</h4>
+                <p>A bioregional solidarity network from Fort Collins to Colorado Springs.</p>
+                <p style="margin-top: 1rem;">A project of Spirit of the Front Range, a 501(c)(3) nonprofit.</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>The Bioregion</h4>
+                <ul>
+                    <li>Fort Collins</li>
+                    <li>Boulder</li>
+                    <li>Denver Metro</li>
+                    <li>Colorado Springs</li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="mailto:join@frontrangecommons.org">join@frontrangecommons.org</a></li>
+                    <li><a href="mailto:hello@spiritofthefrontrange.org">hello@spiritofthefrontrange.org</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>Formed January 2026 at a gathering in the foothills. We are just beginning.</p>
+        </div>
+    </footer>
+</body>
+</html>
